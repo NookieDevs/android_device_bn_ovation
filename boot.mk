@@ -1,5 +1,5 @@
-ACCLAIM_BOOTLOADER := device/bn/acclaim/prebuilt/boot/flashing_boot_emmc.img
-ACCLAIM_SDCARD_BOOTLOADER := device/bn/acclaim/prebuilt/boot/flashing_boot.img
+ACCLAIM_BOOTLOADER := device/bn/ovation/prebuilt/boot/flashing_boot_emmc.img
+ACCLAIM_SDCARD_BOOTLOADER := device/bn/ovation/prebuilt/boot/flashing_boot.img
 REC_TMP_ZEROS := /tmp/rec_zeros
 BOOT_TMP_ZEROS := /tmp/boot_zeros
 

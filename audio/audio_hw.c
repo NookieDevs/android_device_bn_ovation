@@ -265,7 +265,7 @@
 #define PRODUCT_DEVICE_BLAZE    "blaze"
 #define PRODUCT_DEVICE_TABLET   "blaze_tablet"
 #define PRODUCT_DEVICE_OMAP5_SEVM   "omap5sevm"
-#define PRODUCT_DEVICE_ACCLAIM      "acclaim"
+#define PRODUCT_DEVICE_ACCLAIM      "ovation"
 
 /* fm */
 static bool fm_enable = false;

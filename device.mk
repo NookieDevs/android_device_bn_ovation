@@ -20,7 +20,7 @@
 #
 # Everything in this directory will become public
 
-DEVICE_FOLDER := device/bn/acclaim
+DEVICE_FOLDER := device/bn/ovation
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := $(DEVICE_FOLDER)/kernel
@@ -36,9 +36,9 @@ endif
 
 PRODUCT_COPY_FILES += \
 	$(LOCAL_KERNEL):kernel \
-	$(DEVICE_FOLDER)/root/init.acclaim.rc:root/init.acclaim.rc \
-	$(DEVICE_FOLDER)/root/init.acclaim.usb.rc:root/init.acclaim.usb.rc \
-	$(DEVICE_FOLDER)/root/ueventd.acclaim.rc:root/ueventd.acclaim.rc \
+	$(DEVICE_FOLDER)/root/init.ovation.rc:root/init.ovation.rc \
+	$(DEVICE_FOLDER)/root/init.ovation.usb.rc:root/init.ovation.usb.rc \
+	$(DEVICE_FOLDER)/root/ueventd.ovation.rc:root/ueventd.ovation.rc \
 
 # Audio
 PRODUCT_COPY_FILES += \
@@ -95,7 +95,7 @@ PRODUCT_COPY_FILES += \
 
 # Vold
 PRODUCT_COPY_FILES += \
-	$(DEVICE_FOLDER)/prebuilt/etc/vold.acclaim.fstab:system/etc/vold.fstab
+	$(DEVICE_FOLDER)/prebuilt/etc/vold.ovation.fstab:system/etc/vold.fstab
 
 # Media Profile
 PRODUCT_COPY_FILES += \
@@ -113,7 +113,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	hwprops \
 	CMStats \
-	lights.acclaim
+	lights.ovation
 
 # Place permission files
 PRODUCT_COPY_FILES += \
@@ -133,9 +133,9 @@ PRODUCT_COPY_FILES += \
 
 # Device specific packages
 PRODUCT_PACKAGES += \
-	liblights.acclaim \
-	power.acclaim \
-	sensors.acclaim
+	liblights.ovation \
+	power.ovation \
+	sensors.ovation
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -201,7 +201,7 @@ PRODUCT_PACKAGES += \
 	tinycap \
 	sh \
 	libwvm \
-	audio.primary.acclaim \
+	audio.primary.ovation \
 	audio_policy.default 
 
 PRODUCT_PROPERTY_OVERRIDES := \
@@ -234,8 +234,8 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, vendor/bn/acclaim/device-vendor.mk)
-$(call inherit-product-if-exists, vendor/bn/acclaim/device-vendor-blobs.mk)
+$(call inherit-product-if-exists, vendor/bn/ovation/device-vendor.mk)
+$(call inherit-product-if-exists, vendor/bn/ovation/device-vendor-blobs.mk)
 
 #$(call inherit-product, $(DEVICE_FOLDER)/wl12xx/ti-wl12xx-vendor.mk)
 #$(call inherit-product, $(DEVICE_FOLDER)/wl12xx/ti-wpan-products.mk)

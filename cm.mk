@@ -14,25 +14,25 @@
 # limitations under the License.
 #
 
-TARGET_SCREEN_WIDTH := 1024
-TARGET_SCREEN_HEIGHT := 600
+TARGET_SCREEN_WIDTH := 1920
+TARGET_SCREEN_HEIGHT := 1280
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
 
-# Inherit device configuration for acclaim
-$(call inherit-product, device/bn/acclaim/full_acclaim.mk)
+# Inherit device configuration for ovation
+$(call inherit-product, device/bn/ovation/full_ovation.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/bn/acclaim/overlay/cm
+DEVICE_PACKAGE_OVERLAYS += device/bn/ovation/overlay/cm
 
 TARGET_HAS_CUSTOM_LIBION := true
 
-PRODUCT_NAME := cm_acclaim
-PRODUCT_DEVICE := acclaim
+PRODUCT_NAME := cm_ovation
+PRODUCT_DEVICE := ovation
 PRODUCT_BRAND := Android
-PRODUCT_MODEL := Barnes & Noble Nook Tablet
+PRODUCT_MODEL := Barnes & Noble Nook HD+
 PRODUCT_MANUFACTURER := Barnes & Noble
-PRODUCT_RELEASE_NAME := NookTablet
+PRODUCT_RELEASE_NAME := NookHD+
 
 
 

@@ -24,7 +24,7 @@ BOARD_USES_GENERIC_AUDIO := false
 BOARD_HAVE_BLUETOOTH := false
 
 # inherit from the proprietary version
--include vendor/bn/acclaim/BoardConfigVendor.mk
+-include vendor/bn/ovation/BoardConfigVendor.mk
 
 # Processor 
 TARGET_BOARD_PLATFORM := omap4
@@ -35,7 +35,7 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8 -mfpu=neon -mfloat-abi=softfp
-TARGET_BOOTLOADER_BOARD_NAME := acclaim
+TARGET_BOOTLOADER_BOARD_NAME := ovation
 
 # Kernel/Boot
 BOARD_KERNEL_BASE := 0x80080000
@@ -74,7 +74,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/virtual/android_usb/android0/f_
 
 # Graphics
 USE_OPENGL_RENDERER := true
-BOARD_EGL_CFG := device/bn/acclaim/prebuilt/etc/egl.cfg
+BOARD_EGL_CFG := device/bn/ovation/prebuilt/etc/egl.cfg
 
 # OMAP
 OMAP_ENHANCEMENT := true
@@ -82,8 +82,8 @@ OMAP_ENHANCEMENT_MULTIGPU := true
 ENHANCED_DOMX := true
 
 # Recovery
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/bn/acclaim/recovery/recovery_ui.c
-TARGET_RECOVERY_INITRC := device/bn/acclaim/recovery/init.rc
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/bn/ovation/recovery/recovery_ui.c
+TARGET_RECOVERY_INITRC := device/bn/ovation/recovery/init.rc
 TARGET_RECOVERY_PRE_COMMAND := "echo 'recovery' > /bootdata/BCB; sync"
 BOARD_HAS_LARGE_FILESYSTEM := true
 
@@ -92,37 +92,37 @@ ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.allow.mock.location=1
 
 # boot.img creation
-BOARD_CUSTOM_BOOTIMG_MK := device/bn/acclaim/boot.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/bn/ovation/boot.mk
 TARGET_NO_BOOTLOADER := true
 TARGET_PROVIDES_RELEASETOOLS := true
 
 # hack the ota
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/bn/acclaim/releasetools/acclaim_ota_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/bn/ovation/releasetools/ovation_ota_from_target_files
 # not tested at all
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/bn/acclaim/releasetools/acclaim_img_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/bn/ovation/releasetools/ovation_img_from_target_files
 
-TARGET_KERNEL_CONFIG := cyanogenmod_acclaim_defconfig
-TARGET_KERNEL_SOURCE := kernel/bn/acclaim
+TARGET_KERNEL_CONFIG := cyanogenmod_ovation_defconfig
+TARGET_KERNEL_SOURCE := kernel/bn/ovation
 
 SGX_MODULES:
-	cp kernel/bn/acclaim/drivers/video/omap2/omapfb/omapfb.h $(KERNEL_OUT)/drivers/video/omap2/omapfb/omapfb.h
-	make ARCH="arm" -C kernel/bn/acclaim/external/sgx/src/eurasia_km/eurasiacon/build/linux2/omap4430_android CROSS_COMPILE=arm-eabi- TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=540 PLATFORM_VERSION=4.0  KERNEL_CROSS_COMPILE=arm-eabi- KERNELDIR=$(KERNEL_OUT)
+	cp kernel/bn/ovation/drivers/video/omap2/omapfb/omapfb.h $(KERNEL_OUT)/drivers/video/omap2/omapfb/omapfb.h
+	make ARCH="arm" -C kernel/bn/ovation/external/sgx/src/eurasia_km/eurasiacon/build/linux2/omap4430_android CROSS_COMPILE=arm-eabi- TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=540 PLATFORM_VERSION=4.0  KERNEL_CROSS_COMPILE=arm-eabi- KERNELDIR=$(KERNEL_OUT)
 	mv $(KERNEL_OUT)/../../target/kbuild/pvrsrvkm_sgx540_120.ko $(KERNEL_MODULES_OUT)
 
 WIFI_MODULES:
-	make -C kernel/bn/acclaim/external/wlan/mac80211/compat_wl12xx KERNEL_DIR=$(KERNEL_OUT) KLIB=$(KERNEL_OUT) KLIB_BUILD=$(KERNEL_OUT) ARCH=arm CROSS_COMPILE=arm-eabi-
+	make -C kernel/bn/ovation/external/wlan/mac80211/compat_wl12xx KERNEL_DIR=$(KERNEL_OUT) KLIB=$(KERNEL_OUT) KLIB_BUILD=$(KERNEL_OUT) ARCH=arm CROSS_COMPILE=arm-eabi-
 	mv $(KERNEL_OUT)/lib/crc7.ko $(KERNEL_MODULES_OUT)
-	mv kernel/bn/acclaim/external/wlan/mac80211/compat_wl12xx/compat/compat.ko $(KERNEL_MODULES_OUT)
-	mv kernel/bn/acclaim/external/wlan/mac80211/compat_wl12xx/net/mac80211/mac80211.ko $(KERNEL_MODULES_OUT)
-	mv kernel/bn/acclaim/external/wlan/mac80211/compat_wl12xx/net/wireless/cfg80211.ko $(KERNEL_MODULES_OUT)
-	mv kernel/bn/acclaim/external/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx.ko $(KERNEL_MODULES_OUT)
-	mv kernel/bn/acclaim/external/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx_sdio.ko $(KERNEL_MODULES_OUT)
+	mv kernel/bn/ovation/external/wlan/mac80211/compat_wl12xx/compat/compat.ko $(KERNEL_MODULES_OUT)
+	mv kernel/bn/ovation/external/wlan/mac80211/compat_wl12xx/net/mac80211/mac80211.ko $(KERNEL_MODULES_OUT)
+	mv kernel/bn/ovation/external/wlan/mac80211/compat_wl12xx/net/wireless/cfg80211.ko $(KERNEL_MODULES_OUT)
+	mv kernel/bn/ovation/external/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx.ko $(KERNEL_MODULES_OUT)
+	mv kernel/bn/ovation/external/wlan/mac80211/compat_wl12xx/drivers/net/wireless/wl12xx/wl12xx_sdio.ko $(KERNEL_MODULES_OUT)
 
 TARGET_KERNEL_MODULES := SGX_MODULES WIFI_MODULES
 
 # Keep this as a fallback
-TARGET_PREBUILT_KERNEL := device/bn/acclaim/kernel
-TARGET_SPECIFIC_HEADER_PATH := device/bn/acclaim/src-headers
+TARGET_PREBUILT_KERNEL := device/bn/ovation/kernel
+TARGET_SPECIFIC_HEADER_PATH := device/bn/ovation/src-headers
 
 ifdef ENHANCED_DOMX
     COMMON_GLOBAL_CFLAGS += -DENHANCED_DOMX
@@ -161,7 +161,7 @@ ifdef OMAP_ENHANCEMENT_MULTIGPU
 endif
 
 #Config for building TWRP
-DEVICE_RESOLUTION := 1024x600
+DEVICE_RESOLUTION := 1920x1280
 RECOVERY_TOUCHSCREEN_SWAP_XY := true
 RECOVERY_TOUCHSCREEN_FLIP_Y := true
 TW_NO_REBOOT_BOOTLOADER := true
