@@ -181,6 +181,9 @@ on boot
     # Note this won't affect the prev boost request for boot time reduction
     write /sys/devices/system/cpu/cpufreq/hotplug/boost_timeout 3000000
 
+    # OVATION use the path below for lcd brightness control
+    chown system system /sys/class/backlight/lcd-backlight/brightness
+
 on property:dev.bootcomplete=1
     start bootcnt
 
